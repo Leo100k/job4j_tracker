@@ -7,4 +7,5 @@ public class Programmer extends Profession {
         super(degree);
         this.programLang = programLang;
     }
+
 }

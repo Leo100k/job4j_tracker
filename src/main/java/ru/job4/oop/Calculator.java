@@ -38,4 +38,5 @@ public class Calculator {
         System.out.println(rslDivide);
         System.out.println(allOperations);
     }
+
 }

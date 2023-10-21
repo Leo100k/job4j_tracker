@@ -40,53 +40,16 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenAddNewItemThenTrackerHasSameItem() {
+    public void whenTestFindByNameCheckSecondItemName() {
         Tracker tracker = new Tracker();
-        Item item = new Item();
-        item.setName("test1");
-        tracker.add(item);
-        Item result = tracker.findById(item.getId());
-        assertThat(result.getName()).isEqualTo(item.getName());
-    }
-
-    @Test
-    public void whenReplaceItemIsSuccessful() {
-        Tracker tracker = new Tracker();
-        Item item = new Item("Bug");
-        tracker.add(item);
-        int id = item.getId();
-        Item updateItem = new Item("Bug with description");
-        tracker.replace(id, updateItem);
-        assertThat(tracker.findById(id).getName()).isEqualTo("Bug with description");
-    }
-
-    @Test
-    public void whenReplaceItemIsNotSuccessful() {
-        Tracker tracker = new Tracker();
-        Item item = new Item("Bug");
-        tracker.add(item);
-        Item updateItem = new Item("Bug with description");
-        boolean result = tracker.replace(1000, updateItem);
-        assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
-        assertThat(result).isFalse();
-    }
-
-    @Test
-    public void whenDeleteItemIsSuccessful() {
-        Tracker tracker = new Tracker();
-        Item item = new Item("Bug");
-        tracker.add(item);
-        int id = item.getId();
-        tracker.delete(id);
-        assertThat(tracker.findById(id)).isNull();
-    }
-
-    @Test
-    public void whenDeleteItemIsNotSuccessful() {
-        Tracker tracker = new Tracker();
-        Item item = new Item("Bug");
-        tracker.add(item);
-        tracker.delete(1000);
-        assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
+        Item first = new Item("First");
+        Item second = new Item("Second");
+        tracker.add(first);
+        tracker.add(second);
+        tracker.add(new Item("First"));
+        tracker.add(new Item("Second"));
+        tracker.add(new Item("First"));
+        Item[] result = tracker.findByName(second.getName());
+        assertThat(result[1].getName()).isEqualTo(second.getName());
     }
 }

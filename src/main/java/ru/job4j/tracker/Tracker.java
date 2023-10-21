@@ -15,59 +15,31 @@ public class Tracker {
     }
 
     public Item findById(int id) {
-        int index = indexOf(id);
-        return index != -1 ? items[index] : null;
-    }
-
-    public Item[] findAll() {
-        Item[] rsl = new Item[items.length];
-        int size = 0;
-        for (Item item : items) {
-            if (item != null) {
-                rsl[size] = item;
-                size++;
-            }
-        }
-        return Arrays.copyOf(rsl, size);
-    }
-
-    public Item[] findByName(String key) {
-        Item[] rsl = new Item[items.length];
-        int size = 0;
-        for (Item item : items) {
-            if (item != null && item.getName().equals(key)) {
-                rsl[size] = item;
-                size++;
-            }
-        }
-        return Arrays.copyOf(rsl, size);
-    }
-
-    public boolean replace(int id, Item updateItem) {
-        int index = indexOf(id);
-        if (index == -1) {
-            return false;
-        } else {
-            items[index].setName(updateItem.getName());
-            return true;
-        }
-    }
-
-    private int indexOf(int id) {
-        int rsl = -1;
+        Item rsl = null;
         for (int index = 0; index < size; index++) {
             Item item = items[index];
-            if (item != null && item.getId() == id) {
-                rsl = index;
+            if (item.getId() == id) {
+                rsl = item;
                 break;
             }
         }
         return rsl;
     }
 
-    public void delete(int id) {
-        if (indexOf(id) != -1) {
-            items[indexOf(id)] = null;
-        }
+    public Item[] findAll() {
+        return Arrays.copyOf(items, size);
     }
+
+    public Item[] findByName(String key) {
+        Item[] rsl = new Item[items.length];
+        int counter = 0;
+        for (int i = 0; i < size; i++) {
+            if (items[i].getName().equals(key)) {
+                rsl[counter] = items[i];
+                counter++;
+            }
+        }
+        return Arrays.copyOf(rsl, counter);
+    }
+
 }

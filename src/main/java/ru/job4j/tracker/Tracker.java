@@ -52,8 +52,7 @@ public class Tracker {
         if (rsl) {
             updateItem.setId(id);
             items[index] = updateItem;
-            return true;
-        }
+          }
         return false;
     }
 
@@ -64,7 +63,7 @@ public class Tracker {
             items[size - 1] = null;
             size--;
         }
-        return true;
+        return false;
     }
 
 }

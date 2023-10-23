@@ -52,18 +52,19 @@ public class Tracker {
         if (rsl) {
             updateItem.setId(id);
             items[index] = updateItem;
-          }
-        return false;
+        }
+        return rsl;
     }
 
     public boolean delete(int id) {
         int distPos = indexOf(id);
-        if (distPos != -1) {
+        boolean rsl = distPos != -1;
+        if (rsl) {
             System.arraycopy(items, (distPos + 1), items, distPos, (size - distPos - 1));
             items[size - 1] = null;
             size--;
         }
-        return false;
+        return rsl;
     }
 
 }

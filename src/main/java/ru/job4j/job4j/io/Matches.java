@@ -1,4 +1,4 @@
-package ru.job4j.io;
+package ru.job4j.job4j.io;
 
 import java.util.Scanner;
 
@@ -14,13 +14,12 @@ public class Matches {
             System.out.println(player + " спичек осталось: " + count);
             System.out.println(player + " введите число от 1 до 3, но не более остатка спичек: ");
             int matches = Integer.parseInt(input.nextLine());
-            if (matches < 4 && matches > 0 && matches <= count) {
+            if (matches > 0 && matches <= Math.min(count, 3)) {
                 turn = !turn;
             count -= matches;
             } else {
                 System.out.println(player + " вы ввели не верное число");
             }
-            /* Остальная логика игры. */
         }
         if (!turn) {
             System.out.println("Выиграл первый игрок");

@@ -4,6 +4,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             showMenu(actions);
+            System.out.println("Вызов № 1 и № 3");
             int select = input.askInt("Выбрать: ");
             UserAction action = actions[select];
             run = action.execute(input, tracker);

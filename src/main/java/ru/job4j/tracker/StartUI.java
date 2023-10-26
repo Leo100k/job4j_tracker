@@ -1,4 +1,5 @@
 package ru.job4j.tracker;
+
 public class StartUI {
 
     private final Output out;
@@ -36,7 +37,7 @@ public class StartUI {
                 new DeleteAction(output),
                 new FindByIdAction(output),
                 new FindByNameAction(output),
-                new ExitAction()
+                new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
     }

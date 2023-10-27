@@ -12,7 +12,6 @@ public class StartUI {
         boolean run = true;
         while (run) {
             showMenu(actions);
-            out.println("Вызов № 1 и № 3");
             int select = input.askInt("Выбрать: ");
             UserAction action = actions[select];
             run = action.execute(input, tracker);
@@ -20,9 +19,9 @@ public class StartUI {
     }
 
     private void showMenu(UserAction[] actions) {
-        System.out.println("Меню:");
+        out.println("Меню:");
         for (int index = 0; index < actions.length; index++) {
-            System.out.println(index + ". " + actions[index].name());
+            out.println(index + ". " + actions[index].name());
         }
     }
 
@@ -41,4 +40,5 @@ public class StartUI {
         };
         new StartUI(output).init(input, tracker, actions);
     }
+
 }

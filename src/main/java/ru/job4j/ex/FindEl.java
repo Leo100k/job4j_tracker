@@ -19,6 +19,7 @@ public class FindEl {
         String[] box = {"сто", "двести", "триста", "четыреста"};
         try {
             indexOf(box, "сто");
+            indexOf(box, "один");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
         }

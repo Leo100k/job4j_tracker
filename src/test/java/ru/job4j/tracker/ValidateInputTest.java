@@ -59,7 +59,6 @@ class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
-        //System.out.println(selected);
         assertThat(selected).isEqualTo(-1);
     }
 }

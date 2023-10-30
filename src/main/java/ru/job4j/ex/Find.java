@@ -2,7 +2,6 @@ package ru.job4j.ex;
 
 public class Find {
     public static String get(String[] data, int index) {
-        //   if (index < 0 && index > data.length) {
         if (index < 0 || index > 2) {
             System.out.println("ИНДЕКС из If" + index);
             throw new IllegalArgumentException("Index out of bound");

@@ -9,16 +9,18 @@ public class FindEl {
                 break;
             }
         }
-        throw new ElementNotFoundException("Element Not Found");
+        if (rsl == -1) {
+            throw new ElementNotFoundException("Element Not Found from IndexOf");
+        }
+        return rsl;
     }
 
     public static void main(String[] args) {
-        String[] box = {"сто", "двести", "тристо", "четыресто"};
+        String[] box = {"сто", "двести", "триста", "четыреста"};
         try {
-            indexOf(box, "ничего");
+            indexOf(box, "сто");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
         }
     }
-
 }

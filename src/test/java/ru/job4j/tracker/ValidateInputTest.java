@@ -61,4 +61,5 @@ class ValidateInputTest {
         int selected = input.askInt("Enter menu:");
         assertThat(selected).isEqualTo(-1);
     }
+
 }

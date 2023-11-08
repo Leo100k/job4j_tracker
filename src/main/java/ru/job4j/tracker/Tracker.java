@@ -5,7 +5,6 @@ import java.util.List;
 
 @SuppressWarnings("checkstyle:EmptyLineSeparator")
 public class Tracker {
-    // private final Item[] items = new Item[100];
     private final List<Item> items = new ArrayList<>();
     private int ids = 1;
     private int size = 0;

@@ -3,16 +3,13 @@ package ru.job4j.tracker;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("checkstyle:EmptyLineSeparator")
 public class Tracker {
     private final List<Item> items = new ArrayList<>();
     private int ids = 1;
-    private int size = 0;
 
     public Item add(Item item) {
         item.setId(ids++);
         items.add(item);
-        size++;
         return item;
     }
 
@@ -22,14 +19,14 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        return items;
+        return List.copyOf(items);
     }
 
     public List<Item> findByName(String key) {
         List<Item> rsl = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            if (items.get(i).getName().equals(key)) {
-                rsl.add(items.get(i));
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+                rsl.add(item);
             }
         }
         return rsl;
@@ -50,14 +47,13 @@ public class Tracker {
         boolean rsl = distPos != -1;
         if (rsl) {
             items.remove(distPos);
-            size--;
         }
         return rsl;
     }
 
     private int indexOf(int id) {
         int rsl = -1;
-        for (int index = 0; index < size; index++) {
+        for (int index = 0; index < items.size(); index++) {
             if (items.get(index).getId() == id) {
                 rsl = index;
                 break;

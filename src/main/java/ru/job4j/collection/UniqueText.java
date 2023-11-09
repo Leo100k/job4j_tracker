@@ -12,7 +12,7 @@ public class UniqueText {
         check.addAll(Arrays.asList(origin));
 
         for (String wordForCheck : textForCheck) {
-            if (rsl != check.contains(wordForCheck)) {
+            if (!check.contains(wordForCheck)) {
                 rsl = false;
                 break;
             }

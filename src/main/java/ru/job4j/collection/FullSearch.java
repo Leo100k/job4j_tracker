@@ -5,10 +5,10 @@ import java.util.Set;
 
 public class FullSearch {
       public Set<String> extractNumber(List<Task> tasks) {
-        Set<String> tasks2 = new HashSet<>();
+        Set<String> uniqTasks = new HashSet<>();
        for (Task task: tasks) {
-           tasks2.add(task.getNumber());
+           uniqTasks.add(task.getNumber());
        }
-       return tasks2;
+       return uniqTasks;
     }
 }

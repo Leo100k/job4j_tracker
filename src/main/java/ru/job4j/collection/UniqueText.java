@@ -7,12 +7,12 @@ public class UniqueText {
     public boolean isEquals(String originText, String duplicateText) {
         boolean rsl = true;
         String[] origin = originText.split(" ");
-        String[] textForCheck = duplicateText.split(" ");
+        String[] duplicate = duplicateText.split(" ");
         HashSet<String> check = new HashSet<>();
         check.addAll(Arrays.asList(origin));
 
-        for (String wordForCheck : textForCheck) {
-            if (!check.contains(wordForCheck)) {
+        for (String word : duplicate) {
+            if (!check.contains(word)) {
                 rsl = false;
                 break;
             }

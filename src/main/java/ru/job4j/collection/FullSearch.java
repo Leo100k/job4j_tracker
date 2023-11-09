@@ -4,9 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 public class FullSearch {
-    Set<String> tasks2 = new HashSet<>();
-
-    public Set<String> extractNumber(List<Task> tasks) {
+      public Set<String> extractNumber(List<Task> tasks) {
+        Set<String> tasks2 = new HashSet<>();
        for (Task task: tasks) {
            tasks2.add(task.getNumber());
        }

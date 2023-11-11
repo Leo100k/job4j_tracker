@@ -42,5 +42,4 @@ public class Account {
     public int hashCode() {
         return Objects.hash(requisite);
     }
-
    }

@@ -27,8 +27,6 @@ public class AnalyzeByMap {
             score.add(new Label(pupil.name(), (double) scoreSum / pupil.subjects().size()));
         }
         return score;
-        //  return List.of(score);
-
     }
 
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {

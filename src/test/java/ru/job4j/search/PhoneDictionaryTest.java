@@ -36,5 +36,4 @@ public class PhoneDictionaryTest {
         ArrayList<Person> persons = phones.find("XXX");
         assertThat(persons.isEmpty()).isEqualTo(true);
     }
-
 }

@@ -33,7 +33,7 @@ public class AnalyzeByMap {
         Map<String, Integer> subjs = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                subjs.put(subject.name(), subjs.getOrDefault(subject.name(), 0) + subject.score());
+                subjs.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + subject.score());
             }
         }
         List<Label> labels = new ArrayList<>();
@@ -60,7 +60,7 @@ public class AnalyzeByMap {
         Map<String, Integer> subjs = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                subjs.put(subject.name(), subjs.getOrDefault(subject.name(), 0) + subject.score());
+                subjs.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + subject.score());
             }
         }
         List<Label> subjRate = new ArrayList<>();

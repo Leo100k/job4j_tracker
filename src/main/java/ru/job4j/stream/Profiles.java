@@ -13,7 +13,6 @@ public class Profiles {
                 .distinct()
                 .collect(Collectors.toList());
 
-        //  return new ArrayList<>();
     }
 
     public static List<Address> collect(List<Profile> profiles) {

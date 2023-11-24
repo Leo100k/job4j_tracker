@@ -19,4 +19,5 @@ public class Profiles {
                 .map(Profile::getAddress)
                 .collect(Collectors.toList());
     }
+
 }

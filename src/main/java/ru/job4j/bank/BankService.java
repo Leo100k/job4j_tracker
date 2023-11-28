@@ -27,25 +27,23 @@ public class BankService {
     }
 
     public User findByPassport(String passport) {
-
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                return user;
-            }
-        }
-        return null;
+        return users.keySet()
+                .stream()
+                .filter(u -> u.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        User foundUser = findByPassport(passport);
-        if (foundUser != null) {
-            for (Account account : users.get(foundUser)) {
-                if (account.getRequisite().equals(requisite)) {
-                    return account;
-                }
-            }
+        var foundUser = findByPassport(passport);
+        if (foundUser == null) {
+            return null;
         }
-        return null;
+        return users.get(foundUser)
+                .stream()
+                .filter(a -> a.getRequisite().equals(requisite))
+                .findFirst()
+                .orElse(null);
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,

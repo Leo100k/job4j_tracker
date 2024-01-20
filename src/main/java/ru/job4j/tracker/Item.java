@@ -9,20 +9,17 @@ public class Item {
     private int id;
     private String name;
 
-    /*
     public Item() {
     }
-   */
+
     public Item(String name) {
         this.name = name;
     }
-/*
+
     public Item(String name, int id) {
         this.id = id;
         this.name = name;
     }
-
-     */
 
     public Item(int id, String name, LocalDateTime created) {
         this.id = id;

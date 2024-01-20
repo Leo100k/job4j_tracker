@@ -18,13 +18,16 @@ public class ValidateInput implements Input {
     public int askInt(String question) {
         boolean invalid = true;
         int value = -1;
+        int n = 0;
         do {
             try {
                 value = input.askInt(question);
+                System.out.println(value);
                 invalid = false;
             } catch (NumberFormatException nfe) {
                 out.println("Пожалуйста, введите корректные данные");
             }
+            n++;
         } while (invalid);
         return value;
     }

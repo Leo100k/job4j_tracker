@@ -14,6 +14,7 @@ class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
+        System.out.println("Selected " + selected);
         assertThat(selected).isEqualTo(1);
     }
 
@@ -32,11 +33,13 @@ class ValidateInputTest {
     public void whenValidIMultiplenput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[]{"5"}
+                new String[]{"one", "5"}
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
+        System.out.println("Селектед  " + selected);
         assertThat(selected).isEqualTo(5);
+
         in = new StubInput(
                 new String[]{"3"}
         );
@@ -63,3 +66,14 @@ class ValidateInputTest {
     }
 
 }
+/*
+Меню:
+0. Добавить новую заявку
+1. Добавить новую заявку
+2. Показать все заявки
+3. Изменить заявку
+4. Удалить заявку
+5. Показать заявку по id
+6. Показать заявки по имени
+7. Завершить программу
+ */

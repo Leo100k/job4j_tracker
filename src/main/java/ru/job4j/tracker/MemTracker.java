@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tracker {
+public class MemTracker implements Store {
     private final List<Item> items = new ArrayList<>();
     private int ids = 1;
 
@@ -42,13 +42,10 @@ public class Tracker {
         return rsl;
     }
 
-    public boolean delete(int id) {
-        int distPos = indexOf(id);
-        boolean rsl = distPos != -1;
-        if (rsl) {
-            items.remove(distPos);
-        }
-        return rsl;
+    public void delete(int id) {
+
+            items.remove(id);
+
     }
 
     private int indexOf(int id) {
@@ -60,5 +57,10 @@ public class Tracker {
             }
         }
         return rsl;
+    }
+
+    @Override
+    public void close() throws Exception {
+
     }
 }

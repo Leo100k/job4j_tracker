@@ -39,6 +39,7 @@ public class SqlTracker implements Store {
         if (connection != null) {
             connection.close();
         }
+
     }
 
     @Override

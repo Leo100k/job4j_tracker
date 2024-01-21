@@ -79,7 +79,7 @@ public class SqlTracker implements Store {
 
     @Override
     public void delete(int id) {
-         try (PreparedStatement statement =
+        try (PreparedStatement statement =
                      connection.prepareStatement("DELETE FROM items WHERE id = ?")) {
             statement.setInt(1, id);
             statement.executeUpdate();
@@ -113,11 +113,7 @@ public class SqlTracker implements Store {
         try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM items WHERE name = '" + key + "'")) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime()
-                    ));
+                    items.add(createItem(resultSet));
                 }
             }
         } catch (Exception e) {
@@ -132,11 +128,7 @@ public class SqlTracker implements Store {
         try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM items WHERE id = " + id)) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    item = new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime()
-                    );
+                    item = createItem(resultSet);
                 }
             }
         } catch (Exception e) {
@@ -144,5 +136,13 @@ public class SqlTracker implements Store {
         }
         return item;
 
+    }
+
+    private Item createItem(ResultSet resultSet) throws SQLException {
+        return new Item(
+                resultSet.getInt("id"),
+                resultSet.getString("name"),
+                resultSet.getTimestamp("created").toLocalDateTime()
+        );
     }
 }

@@ -72,7 +72,7 @@ public class Item {
         if (!(o instanceof Item item)) {
             return false;
         }
-        return getId() == item.getId() && Objects.equals(getCreated(), item.getCreated()) && Objects.equals(getName(), item.getName());
+        return getId() == item.getId() && Objects.equals(getCreated().format(FORMATTER), item.getCreated().format(FORMATTER)) && Objects.equals(getName(), item.getName());
     }
 
     @Override

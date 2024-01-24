@@ -133,4 +133,16 @@ public class SqlTrackerTest {
         tracker.delete(1000);
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
     }
+
+    @Test
+    public void whenDeleteItemRestTableExist() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item first = new Item("First");
+        Item second = new Item("Second");
+        tracker.add(first);
+        tracker.add(second);
+        tracker.delete(first.getId());
+        List<Item> result = tracker.findAll();
+        assertThat(result.get(0)).isEqualTo(second);
+    }
 }
